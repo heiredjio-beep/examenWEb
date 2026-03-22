@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.Ramarozaka - The Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#b0101b',
+                        bgCream: '#fbfaf8',
+                        tagBlue: '#5ea2ef',
+                        textDark: '#1a1a1a',
+                        textMuted: '#6b7280'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bgCream font-sans text-textDark flex flex-col min-h-screen">
+
+    <nav class="bg-brandRed text-white px-8 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="flex flex-col border-l-2 border-white pl-2">
+                <span class="text-xl font-serif font-bold tracking-wide group-hover:text-gray-200 transition-colors">T.Ramarozaka</span>
+                <span class="text-[10px] italic font-serif leading-none text-gray-200">consultant · teacher · dev</span>
+            </div>
+        </div>
+        
+        <div class="hidden md:flex gap-8 text-[11px] font-bold tracking-[0.15em] uppercase mt-1">
+            <a href="#" class="hover:text-gray-300 transition-colors">Home</a>
+            <a href="#" class="border-b-[3px] border-white pb-1">Blog</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Courses</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Testimonials</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Research</a>
+        </div>
+        
+        <div class="flex items-center gap-6 text-sm font-medium">
+            <span class="cursor-pointer hover:text-gray-300 transition-colors hidden sm:block">Search anything...</span>
+            <button class="relative hover:scale-110 transition-transform cursor-pointer">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="text-center py-20 px-4">
+        <div class="flex items-center justify-center gap-4 mb-4">
+            <div class="h-[1px] w-8 bg-brandRed/40"></div>
+            <span class="uppercase tracking-[0.2em] text-[10px] font-bold text-gray-400">Writing</span>
+            <div class="h-[1px] w-8 bg-brandRed/40"></div>
+        </div>
+        <h1 class="text-6xl font-serif font-bold text-textDark mb-6 tracking-tight">
+            The <span class="text-brandRed italic">blog</span>
+        </h1>
+        <p class="text-textMuted text-sm max-w-lg mx-auto leading-relaxed">
+            Thoughts on teaching, software engineering, languages, and everything in between.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-6 lg:px-12 flex flex-col lg:flex-row gap-16 pb-24 flex-grow">
+        
+        <div class="lg:w-2/3 flex flex-col">
+            <div id="posts-container" class="flex flex-col gap-6 mb-12">
+                </div>
+            
+            <div id="pagination-container" class="flex justify-center items-center gap-3">
+                </div>
+        </div>
+
+        <aside class="lg:w-1/3 flex flex-col gap-12" id="sidebar-container">
+            </aside>
+        
+    </main>
+
+    <footer class="bg-brandRed text-center py-16 text-white px-4">
+        <h2 class="text-3xl font-serif font-bold mb-3">Want to go deeper?</h2>
+        <p class="text-sm text-gray-200">Explore the courses or get in touch for a consultation.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
