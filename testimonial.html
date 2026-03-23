@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.Ramarozaka - Testimonials</title>
+    <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#fbfaf8] font-sans text-[#1a1a1a] flex flex-col min-h-screen">
+
+    <header class="bg-[#b0101b] text-white sticky top-0 z-50 shadow-md">
+        <nav class="px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="flex flex-col border-l-2 border-white pl-2">
+                    <span class="text-xl font-serif font-bold tracking-wide">T.Ramarozaka</span>
+                    <span class="text-[10px] italic font-serif leading-none text-gray-200">consultant · teacher · dev</span>
+                </div>
+            </a>
+            <ul class="hidden md:flex gap-8 text-[11px] font-bold tracking-[0.15em] uppercase">
+                <li><a href="index.html" class="hover:text-gray-300 transition-colors">Home</a></li>
+                <li><a href="blog.html" class="hover:text-gray-300 transition-colors">Blog</a></li>
+                <li><a href="courses.html" class="hover:text-gray-300 transition-colors">Courses</a></li>
+                <li><a href="#" class="border-b-[3px] border-white pb-1">Testimonials</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+        <section class="text-center py-20 px-4 bg-white border-b border-gray-100">
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <div class="h-[1px] w-8 bg-[#b0101b]/40"></div>
+                <span class="uppercase tracking-[0.2em] text-[10px] font-bold text-gray-400">Feedback</span>
+                <div class="h-[1px] w-8 bg-[#b0101b]/40"></div>
+            </div>
+            <h1 class="text-6xl font-serif font-bold mb-6">What my <span class="text-[#b0101b] italic">students</span> say</h1>
+            <p class="text-gray-500 text-sm max-w-lg mx-auto leading-relaxed">
+                Stories of growth, technical breakthroughs, and career shifts from the people I've had the honor to teach.
+            </p>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-20">
+            <ul id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                </ul>
+        </section>
+
+        <section class="bg-white py-20 border-t border-gray-100">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <h2 class="text-3xl font-serif font-bold mb-8 italic">Ready to start your own journey?</h2>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="courses.html" class="group flex items-center gap-3 bg-[#b0101b] text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-800 transition-all shadow-lg hover:shadow-red-200">
+                        Explore Courses
+                        <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                    <a href="contact.html" class="group flex items-center gap-3 bg-white border-2 border-gray-100 text-[#1a1a1a] px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:border-[#b0101b] hover:text-[#b0101b] transition-all shadow-sm">
+                        Get in Touch
+                        <span class="group-hover:-translate-y-1 transition-transform">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#1a1a1a] text-white py-12 text-center text-[10px] uppercase tracking-widest font-bold">
+        &copy; 2026 Tokimahery Ramarozaka — Built with Passion & Code
+    </footer>
+
+    <script src="tokimahery.data.js"></script>
+    <script src="testimonials.js"></script>
+</body>
+</html>

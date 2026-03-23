@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Tokimahery Ramarozaka - Consultant, Teacher, Developer, and PhD Researcher.">
+    <title>T.Ramarozaka - Home</title>
+    <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#fbfaf8] font-sans text-[#1a1a1a] flex flex-col min-h-screen">
+
+    <header class="bg-[#b0101b] text-white sticky top-0 z-50 shadow-md">
+        <nav aria-label="Main Navigation" class="px-8 py-4 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center gap-3 cursor-pointer group" aria-label="Go to homepage">
+                <div class="flex flex-col border-l-2 border-white pl-2">
+                    <span class="text-xl font-serif font-bold tracking-wide group-hover:text-gray-200 transition-colors">T.Ramarozaka</span>
+                    <span class="text-[10px] italic font-serif leading-none text-gray-200">consultant · teacher · dev</span>
+                </div>
+            </a>
+            
+            <ul class="hidden md:flex gap-8 text-[11px] font-bold tracking-[0.15em] uppercase mt-1">
+                <li><a href="#" class="border-b-[3px] border-white pb-1" aria-current="page">Home</a></li>
+                <li><a href="blog.html" class="hover:text-gray-300 transition-colors">Blog</a></li>
+                <li><a href="courses.html" class="hover:text-gray-300 transition-colors">Courses</a></li>
+                <li><a href="#" class="hover:text-gray-300 transition-colors">Testimonials</a></li>
+                <li><a href="#" class="hover:text-gray-300 transition-colors">Research</a></li>
+            </ul>
+            
+            <div class="flex items-center gap-6 text-sm font-medium">
+                <span class="cursor-pointer hover:text-gray-300 transition-colors hidden sm:block">Search anything...</span>
+                <button aria-label="Shopping Cart" class="relative hover:scale-110 transition-transform cursor-pointer">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+        
+        <section aria-labelledby="hero-heading" class="max-w-7xl mx-auto w-full px-6 lg:px-12 py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+            
+            <div class="md:w-1/2 flex flex-col items-start">
+                <header class="flex items-center gap-4 mb-6">
+                    <div class="h-[2px] w-8 bg-[#b0101b]" aria-hidden="true"></div>
+                    <span class="uppercase tracking-widest text-xs font-bold text-gray-500">Portfolio & Services</span>
+                </header>
+                
+                <h1 id="hero-heading" class="text-6xl md:text-7xl font-serif text-[#1a1a1a] mb-2 leading-tight">
+                    Tokimahery <br>
+                    <span class="text-[#b0101b] italic">Ramarozaka</span>
+                </h1>
+                
+                <p class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-8 mt-4">
+                    Consultant · Teacher · Developer · Translator · PhD
+                </p>
+                
+                <p class="text-gray-600 text-sm max-w-md leading-relaxed mb-8">
+                    Bridging knowledge across disciplines — from cutting-edge software development to academic research and multilingual expertise.
+                </p>
+                
+                <div class="flex items-center gap-4 mb-10">
+                    <a href="#courses" class="bg-[#b0101b] text-white px-8 py-3 rounded-lg text-sm font-medium hover:bg-red-800 transition-colors shadow-md hover:shadow-lg">Book a course</a>
+                    <a href="#about" class="bg-white border border-gray-200 text-[#1a1a1a] px-8 py-3 rounded-lg text-sm font-medium hover:border-[#b0101b] hover:text-[#b0101b] transition-all shadow-sm">About me</a>
+                </div>
+                
+                <a href="#footer" class="text-[#b0101b] text-xs font-bold uppercase tracking-widest hover:underline transition-all mb-8">
+                    Ask for a collaboration →
+                </a>
+                
+                <nav aria-label="Social Links" class="flex gap-4 text-gray-400">
+                    <a href="#" aria-label="Facebook" class="hover:text-[#b0101b] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+                    <a href="#" aria-label="YouTube" class="text-[#b0101b] hover:text-red-800 transition-colors"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg></a>
+                    <a href="#" aria-label="Instagram" class="hover:text-[#b0101b] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.69-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.16c1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-4.27.2-6.78 2.71-6.98 6.98C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.27 2.71 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.27-.2 6.78-2.71 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.27-2.71-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-11.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+                    <a href="#" aria-label="LinkedIn" class="hover:text-[#b0101b] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.33V9h3.42v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.45a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13h-3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a>
+                </nav>
+            </div>
+
+            <figure class="md:w-1/2 flex justify-center relative">
+                <div class="absolute w-[450px] h-[450px] border-[1px] border-[#b0101b]/10 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10" aria-hidden="true"></div>
+                <div class="absolute w-[550px] h-[550px] border-[1px] border-[#b0101b]/5 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10" aria-hidden="true"></div>
+                
+                <div class="w-80 h-80 rounded-full border-8 border-white shadow-2xl overflow-hidden relative z-10 bg-gray-200">
+                    <img src="./assets/square-image.jpg" alt="Portrait of Tokimahery Ramarozaka presenting at a conference" class="w-full h-full object-cover">
+                </div>
+            </figure>
+        </section>
+
+        <section id="about" aria-labelledby="about-heading" class="bg-white py-24 border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row gap-16">
+                
+                <header class="md:w-1/3">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-[2px] w-8 bg-[#b0101b]" aria-hidden="true"></div>
+                        <span class="uppercase tracking-widest text-[10px] font-bold text-gray-400">Who I am</span>
+                    </div>
+                    <h2 id="about-heading" class="text-5xl font-serif font-bold text-[#1a1a1a] leading-tight">About <br><span class="italic">me</span></h2>
+                </header>
+                
+                <div class="md:w-2/3 flex flex-col justify-center">
+                    <div id="about-text" class="text-sm text-gray-600 leading-relaxed flex flex-col gap-4 mb-12"></div>
+                    
+                    <dl id="about-stats" class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-100"></dl>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" aria-labelledby="courses-heading" class="bg-[#fbfaf8] py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center">
+                
+                <header class="text-center w-full mb-16">
+                    <div class="flex items-center justify-center gap-4 mb-4">
+                        <div class="h-[1px] w-8 bg-[#b0101b]/40" aria-hidden="true"></div>
+                        <span class="uppercase tracking-widest text-[10px] font-bold text-gray-400">Learning</span>
+                        <div class="h-[1px] w-8 bg-[#b0101b]/40" aria-hidden="true"></div>
+                    </div>
+                    <h2 id="courses-heading" class="text-5xl font-serif font-bold">Courses <span class="italic">online</span><br>and offline</h2>
+                </header>
+                
+                <ul id="courses-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mb-12"></ul>
+                
+                <a href="courses.html" class="text-[#b0101b] text-xs font-bold uppercase tracking-widest hover:underline transition-all">
+                    View all courses →
+                </a>
+            </div>
+        </section>
+
+        <section id="experience" aria-labelledby="experience-heading" class="bg-white py-24 border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                
+                <header class="mb-16">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-[2px] w-8 bg-[#b0101b]" aria-hidden="true"></div>
+                        <span class="uppercase tracking-widest text-[10px] font-bold text-gray-400">Background</span>
+                    </div>
+                    <h2 id="experience-heading" class="text-5xl font-serif font-bold text-[#1a1a1a]">Experience</h2>
+                </header>
+                
+                <ol id="experience-container" class="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-16"></ol>
+            </div>
+        </section>
+
+    </main>
+
+    <footer aria-labelledby="footer-heading" class="bg-[#b0101b] text-center py-20 text-white px-4">
+        <h2 id="footer-heading" class="text-4xl font-serif font-bold mb-4">Ready to collaborate?</h2>
+        <p class="text-sm text-gray-200">Whether you're looking for a course, a consultation, or a translation — let's talk.</p>
+    </footer>
+
+    <script src="tokimahery.data.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>
