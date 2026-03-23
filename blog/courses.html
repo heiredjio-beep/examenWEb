@@ -37,48 +37,119 @@
     </header>
 
     <main class="flex-grow">
-        <section class="text-center py-20 px-4 bg-white border-b border-gray-100">
-            <div class="flex items-center justify-center gap-4 mb-4">
-                <div class="h-[1px] w-8 bg-brandRed/40"></div>
-                <span class="uppercase tracking-[0.2em] text-[10px] font-bold text-gray-400">Learning</span>
-                <div class="h-[1px] w-8 bg-brandRed/40"></div>
-            </div>
-            <h1 class="text-6xl font-serif font-bold mb-6">Courses <span class="text-brandRed italic">online</span> and offline</h1>
-            <p class="text-textMuted text-sm max-w-lg mx-auto leading-relaxed">
-                From programming fundamentals to advanced backend architecture — courses designed to build real skills.
-            </p>
-        </section>
-
-        <!-- Filters -->
-        <section class="max-w-7xl mx-auto px-6 py-8">
-            <div class="flex flex-wrap gap-4 items-center justify-center">
-                <button onclick="filterCourses('all')" class="filter-btn active px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="all">All</button>
-                <button onclick="filterCourses('beginner')" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="beginner">Beginner</button>
-                <button onclick="filterCourses('intermediate')" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="intermediate">Intermediate</button>
-                <button onclick="filterCourses('advanced')" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="advanced">Advanced</button>
+        <!-- Hero Section -->
+        <section class="bg-bgCream py-16">
+            <div class="text-center px-4">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="h-[1px] w-8 bg-brandRed/40"></div>
+                    <span class="uppercase tracking-[0.2em] text-[10px] font-bold text-gray-400">Learning</span>
+                    <div class="h-[1px] w-8 bg-brandRed/40"></div>
+                </div>
+                <h1 class="text-6xl font-serif font-bold mb-6 ">All <span class="text-brandRed italic">courses</span> </h1>
+                <p class="text-textMuted text-sm max-w-lg mx-auto leading-relaxed">
+                    From programming fundamentals to advanced backend architecture — courses designed to build real skills.
+                </p>
             </div>
         </section>
 
-        <!-- Courses Grid -->
-        <section class="max-w-7xl mx-auto px-6 pb-20">
-            <ul id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></ul>
-        </section>
+        <!-- Filters Section -->
+        <section class="bg-white py-6">
+            <div class="max-w-[1400px] mx-auto px-6 py-6 bg-bgCream border border-gray-200 rounded-xl">
+                <!-- Filtres en ligne avec labels -->
+                <div class="flex flex-wrap items-end justify-between gap-x-4 gap-y-4">
+                    <!-- Language -->
+                    <div class="flex flex-col gap-1.5">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Language</span>
+                        <div class="flex gap-1.5">
+                            <button onclick="setLanguage('en')" class="lang-btn w-7 h-5 rounded overflow-hidden border-2 border-transparent hover:border-brandRed transition-all focus:outline-none" data-lang="en" title="English">
+                                <img src="https://flagcdn.com/w40/us.png" alt="EN" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="setLanguage('fr')" class="lang-btn w-7 h-5 rounded overflow-hidden border-2 border-transparent hover:border-brandRed transition-all focus:outline-none" data-lang="fr" title="Français">
+                                <img src="https://flagcdn.com/w40/fr.png" alt="FR" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="setLanguage('mg')" class="lang-btn w-7 h-5 rounded overflow-hidden border-2 border-transparent hover:border-brandRed transition-all focus:outline-none" data-lang="mg" title="Malagasy">
+                                <img src="https://flagcdn.com/w40/mg.png" alt="MG" class="w-full h-full object-cover">
+                            </button>
+                        </div>
+                    </div>
 
-        <section class="bg-white py-20 border-t border-gray-100">
-            <div class="max-w-4xl mx-auto text-center px-6">
-                <h2 class="text-3xl font-serif font-bold mb-8 italic">Need a custom course?</h2>
-                <p class="text-textMuted text-sm mb-8 max-w-lg mx-auto">I offer personalized training for teams and individuals. Let's discuss your needs.</p>
-                <a href="contact.html" class="inline-flex items-center gap-3 bg-brandRed text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-800 transition-all shadow-lg hover:shadow-red-200">
-                    Get in Touch
-                    <span>→</span>
-                </a>
+                    <!-- Technology -->
+                    <div class="flex flex-col gap-1.5">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Technology</span>
+                        <select id="filter-technology" class="bg-white border border-gray-200 rounded px-3 py-1.5 text-xs text-gray-700 focus:outline-none focus:border-brandRed cursor-pointer min-w-[120px]">
+                            <option value="">All</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="sql">SQL</option>
+                        </select>
+                    </div>
+
+                    <!-- Level -->
+                    <div class="flex flex-col gap-1.5">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Level</span>
+                        <select id="filter-level" class="bg-white border border-gray-200 rounded px-3 py-1.5 text-xs text-gray-700 focus:outline-none focus:border-brandRed cursor-pointer min-w-[100px]">
+                            <option value="">All</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="flex flex-col gap-1.5">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                            Price: <span id="price-display" class="text-gray-600 font-normal">0 - 250,000</span>
+                        </span>
+                        <div class="flex flex-col gap-0.5 min-w-[160px]">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[9px] text-gray-400 w-6">Min</span>
+                                <input type="range" id="price-min-slider" min="0" max="250000" value="0" step="5000" class="flex-1 h-1.5 bg-gray-200 rounded appearance-none cursor-pointer accent-brandRed">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[9px] text-gray-400 w-6">Max</span>
+                                <input type="range" id="price-max-slider" min="0" max="250000" value="250000" step="5000" class="flex-1 h-1.5 bg-gray-200 rounded appearance-none cursor-pointer accent-brandRed">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="flex flex-col gap-1.5 w-[160px]">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Search</span>
+                        <div class="relative">
+                            <input type="text" id="filter-search" placeholder="Keyword..." class="w-full bg-white border border-gray-200 rounded-md pl-8 pr-3 py-2 text-xs text-gray-700 focus:outline-none focus:border-brandRed">
+                            <svg class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                    </div>
+
+                    <!-- Clear -->
+                    <button id="clear-filters" class="px-4 py-2 text-xs text-gray-500 bg-gray-100 border border-gray-200 rounded-md hover:bg-gray-200 hover:text-gray-700 transition-all cursor-pointer whitespace-nowrap self-end">
+                        Clear all
+                    </button>
+                </div>
             </div>
         </section>
+
+        <!-- Courses Grid Section -->
+        <section class="bg-white pt-4">
+            <div class="max-w-[1400px] mx-auto px-6">
+                <!-- Results Counter - en haut à gauche -->
+                <div class="mb-4">
+                    <span id="results-count" class="text-xs font-semibold text-gray-600">9 courses found</span>
+                </div>
+                <div class="py-4 pb-16">
+                    <ul id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"></ul>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-brandRed text-center py-16 text-white px-4">
-        <h2 class="text-3xl font-serif font-bold mb-3">Ready to start learning?</h2>
-        <p class="text-sm text-gray-200">Book a course or contact me for personalized training.</p>
+    <footer class="bg-brandRed text-center py-16 px-4">
+        <h2 class="text-4xl font-serif font-bold text-white mb-4">NOT SURE TO START ?</h2>
+        <p class="text-sm text-gray-200 mb-8">Book a course or contact me for personalized training.</p>
+        <a href="contact.html" class="inline-block bg-white text-brandRed px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-gray-100 transition-all shadow-lg">
+            Get in Touch
+        </a>
     </footer>
 
     <script src="tokimahery.data.js"></script>

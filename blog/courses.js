@@ -1,7 +1,18 @@
-let currentFilter = 'all';
+let filters = {
+    language: '',
+    technology: '',
+    level: '',
+    priceMin: 0,
+    priceMax: 250000,
+    search: ''
+};
 
 const formatPrice = (price) => {
     return new Intl.NumberFormat('mg-MG').format(price) + ' MGA';
+};
+
+const formatPriceShort = (price) => {
+    return new Intl.NumberFormat('mg-MG').format(price);
 };
 
 const getLevelColor = (level) => {
@@ -22,44 +33,166 @@ const getLanguageLabel = (lang) => {
     }
 };
 
-const renderCourses = (filter = 'all') => {
+const updateResultsCount = (count) => {
+    document.getElementById('results-count').textContent = `${count} course${count !== 1 ? 's' : ''} found`;
+};
+
+const updatePriceDisplay = () => {
+    const min = parseInt(filters.priceMin) || 0;
+    const max = parseInt(filters.priceMax) || 250000;
+    document.getElementById('price-display').textContent =
+        `${formatPriceShort(min)} - ${formatPriceShort(max)}`;
+};
+
+const applyFilters = () => {
+    let courses = data.courses;
+
+    // Filtre langue
+    if (filters.language) {
+        courses = courses.filter(c => c.language === filters.language);
+    }
+
+    // Filtre technologie
+    if (filters.technology) {
+        courses = courses.filter(c => c.technologies && c.technologies.includes(filters.technology));
+    }
+
+    // Filtre niveau
+    if (filters.level) {
+        courses = courses.filter(c => c.level === filters.level);
+    }
+
+    // Filtre prix min
+    if (filters.priceMin) {
+        courses = courses.filter(c => c.price >= parseInt(filters.priceMin));
+    }
+
+    // Filtre prix max
+    if (filters.priceMax) {
+        courses = courses.filter(c => c.price <= parseInt(filters.priceMax));
+    }
+
+    // Filtre recherche
+    if (filters.search) {
+        const searchLower = filters.search.toLowerCase();
+        courses = courses.filter(c =>
+            c.title.toLowerCase().includes(searchLower) ||
+            c.description.toLowerCase().includes(searchLower)
+        );
+    }
+
+    renderCourses(courses);
+    updateResultsCount(courses.length);
+};
+
+const setLanguage = (lang) => {
+    // Si même langue cliquée, désélectionner
+    if (filters.language === lang) {
+        filters.language = '';
+    } else {
+        filters.language = lang;
+    }
+
+    // Mettre à jour visuel des boutons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('border-brandRed');
+        btn.classList.add('border-transparent');
+        if (btn.dataset.lang === filters.language) {
+            btn.classList.remove('border-transparent');
+            btn.classList.add('border-brandRed');
+        }
+    });
+
+    applyFilters();
+};
+
+const clearFilters = () => {
+    filters = { language: '', technology: '', level: '', priceMin: 0, priceMax: 250000, search: '' };
+
+    // Reset language buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('border-brandRed');
+        btn.classList.add('border-transparent');
+    });
+
+    // Reset dropdowns
+    document.getElementById('filter-technology').value = '';
+    document.getElementById('filter-level').value = '';
+    document.getElementById('filter-search').value = '';
+
+    // Reset sliders
+    document.getElementById('price-min-slider').value = 0;
+    document.getElementById('price-max-slider').value = 250000;
+    updatePriceDisplay();
+
+    applyFilters();
+};
+
+const renderCourses = (courses) => {
     const container = document.getElementById('courses-container');
     container.innerHTML = '';
 
-    let courses = data.courses;
-    if (filter !== 'all') {
-        courses = courses.filter(c => c.level === filter);
+    if (courses.length === 0) {
+        container.innerHTML = '<li class="col-span-full text-center py-12 text-gray-500">No courses found matching your criteria.</li>';
+        return;
     }
 
     courses.forEach(course => {
-        const techTags = (course.technologies || []).map(tech =>
-            `<span class="bg-tagBlue text-white text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">${tech}</span>`
-        ).join('');
+        const levelColors = {
+            'beginner': 'bg-green-500 text-white',
+            'intermediate': 'bg-yellow-500 text-white',
+            'advanced': 'bg-red-500 text-white'
+        };
+
+        // Badge technologie (premier élément du tableau)
+        const techBadge = course.technologies && course.technologies.length > 0
+            ? `<span class="bg-white text-gray-800 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded shadow-sm">${course.technologies[0]}</span>`
+            : '';
+
+        // Badge langue
+        const langLabel = getLanguageLabel(course.language);
+        const langBadge = `<span class="bg-white text-gray-800 text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded shadow-sm">${langLabel}</span>`;
 
         const card = document.createElement('li');
         card.className = 'h-full';
         card.innerHTML = `
-            <article class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group cursor-pointer">
-                <div class="overflow-hidden rounded-xl mb-4 h-40 bg-gray-100">
+            <article class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full group cursor-pointer overflow-hidden">
+                <!-- Image avec badges superposés -->
+                <div class="relative h-52 bg-gray-100 overflow-hidden">
                     <img src="${course.thumbnail}" alt="${course.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+
+                    <!-- Badges en haut à gauche (langue + technologie) -->
+                    <div class="absolute top-2 left-2 flex gap-1">
+                        ${langBadge}
+                        ${techBadge}
+                    </div>
+
+                    <!-- Badge niveau en bas à droite -->
+                    <span class="absolute bottom-2 right-2 ${levelColors[course.level] || 'bg-gray-500 text-white'} text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">
+                        ${course.level}
+                    </span>
                 </div>
 
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="${getLevelColor(course.level)} text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">${course.level}</span>
-                    <span class="bg-gray-100 text-gray-600 text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full">${getLanguageLabel(course.language)}</span>
-                </div>
+                <!-- Contenu sous l'image -->
+                <div class="p-4 flex flex-col flex-grow">
+                    <!-- Titre en ROUGE -->
+                    <h3 class="text-base font-bold text-brandRed mb-1 line-clamp-2">${course.title}</h3>
 
-                <h3 class="text-lg font-serif font-bold text-textDark mb-2 group-hover:text-brandRed transition-colors">${course.title}</h3>
+                    <!-- Prix -->
+                    <span class="text-sm text-gray-700 font-semibold mb-2">${formatPrice(course.price)}</span>
 
-                <p class="text-sm text-textMuted mb-4 line-clamp-3 flex-grow">${course.description}</p>
+                    <!-- Description -->
+                    <p class="text-sm text-gray-500 mb-4 line-clamp-2 flex-grow">${course.description}</p>
 
-                ${techTags ? `<div class="flex flex-wrap gap-1 mb-4">${techTags}</div>` : ''}
-
-                <div class="flex justify-between items-center pt-4 border-t border-gray-100">
-                    <span class="text-lg font-bold text-brandRed">${formatPrice(course.price)}</span>
-                    <button class="text-xs font-bold uppercase tracking-wider text-textDark hover:text-brandRed transition-colors">
-                        Enroll →
-                    </button>
+                    <!-- Boutons décalés vers la droite -->
+                    <div class="mt-auto flex gap-2 justify-end">
+                        <button class="bg-white shadow text-gray-700 py-2 px-4 rounded font-medium text-xs hover:shadow-md transition-all cursor-pointer">
+                            Learn more
+                        </button>
+                        <button class="bg-red-600 text-white py-2 px-4 rounded font-bold text-xs hover:bg-red-700 shadow transition-colors cursor-pointer">
+                            Add to cart
+                        </button>
+                    </div>
                 </div>
             </article>
         `;
@@ -67,24 +200,43 @@ const renderCourses = (filter = 'all') => {
     });
 };
 
-const filterCourses = (filter) => {
-    currentFilter = filter;
-
-    // Update active button
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-brandRed', 'text-white', 'border-brandRed');
-        if (btn.dataset.filter === filter) {
-            btn.classList.add('bg-brandRed', 'text-white', 'border-brandRed');
-        }
-    });
-
-    renderCourses(filter);
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof data === 'undefined') {
         console.error("Le fichier de données n'est pas chargé.");
         return;
     }
-    renderCourses();
+
+    // Event listeners pour les filtres
+    document.getElementById('filter-technology').addEventListener('change', (e) => {
+        filters.technology = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('filter-level').addEventListener('change', (e) => {
+        filters.level = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('price-min-slider').addEventListener('input', (e) => {
+        filters.priceMin = e.target.value;
+        updatePriceDisplay();
+        applyFilters();
+    });
+
+    document.getElementById('price-max-slider').addEventListener('input', (e) => {
+        filters.priceMax = e.target.value;
+        updatePriceDisplay();
+        applyFilters();
+    });
+
+    document.getElementById('filter-search').addEventListener('input', (e) => {
+        filters.search = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('clear-filters').addEventListener('click', clearFilters);
+
+    // Initial render
+    renderCourses(data.courses);
+    updateResultsCount(data.courses.length);
 });
