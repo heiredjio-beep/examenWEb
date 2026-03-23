@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Claude Code
+CLAUDE.md
+.claude/
+
+# Design references
+Image_web_view/
+
+# Build outputs
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
