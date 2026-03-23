@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Courses by Tokimahery Ramarozaka - Web development, databases, programming languages, and more.">
+    <title>T.Ramarozaka - Courses</title>
+    <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-bgCream font-sans text-textDark flex flex-col min-h-screen">
+
+    <header class="bg-brandRed text-white sticky top-0 z-50 shadow-md">
+        <nav aria-label="Main Navigation" class="px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer group" aria-label="Go to homepage">
+                <div class="flex flex-col border-l-2 border-white pl-2">
+                    <span class="text-xl font-serif font-bold tracking-wide group-hover:text-gray-200 transition-colors">T.Ramarozaka</span>
+                    <span class="text-[10px] italic font-serif leading-none text-gray-200">consultant · teacher · dev</span>
+                </div>
+            </a>
+
+            <ul class="hidden md:flex gap-8 text-[11px] font-bold tracking-[0.15em] uppercase mt-1">
+                <li><a href="index.html" class="hover:text-gray-300 transition-colors">Home</a></li>
+                <li><a href="blog.html" class="hover:text-gray-300 transition-colors">Blog</a></li>
+                <li><a href="courses.html" class="border-b-[3px] border-white pb-1">Courses</a></li>
+                <li><a href="testimonial.html" class="hover:text-gray-300 transition-colors">Testimonials</a></li>
+                <li><a href="research.html" class="hover:text-gray-300 transition-colors">Research</a></li>
+            </ul>
+
+            <div class="flex items-center gap-6 text-sm font-medium">
+                <span class="cursor-pointer hover:text-gray-300 transition-colors hidden sm:block">Search anything...</span>
+                <button aria-label="Shopping Cart" class="relative hover:scale-110 transition-transform cursor-pointer">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+        <section class="text-center py-20 px-4 bg-white border-b border-gray-100">
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <div class="h-[1px] w-8 bg-brandRed/40"></div>
+                <span class="uppercase tracking-[0.2em] text-[10px] font-bold text-gray-400">Learning</span>
+                <div class="h-[1px] w-8 bg-brandRed/40"></div>
+            </div>
+            <h1 class="text-6xl font-serif font-bold mb-6">Courses <span class="text-brandRed italic">online</span> and offline</h1>
+            <p class="text-textMuted text-sm max-w-lg mx-auto leading-relaxed">
+                From programming fundamentals to advanced backend architecture — courses designed to build real skills.
+            </p>
+        </section>
+
+        <!-- Filters -->
+        <section class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex flex-wrap gap-4 items-center justify-center">
+                <button onclick="filterCourses('all')" class="filter-btn active px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="all">All</button>
+                <button onclick="filterCourses('beginner')" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="beginner">Beginner</button>
+                <button onclick="filterCourses('intermediate')" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="intermediate">Intermediate</button>
+                <button onclick="filterCourses('advanced')" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border border-gray-200 bg-white hover:border-brandRed hover:text-brandRed transition-all" data-filter="advanced">Advanced</button>
+            </div>
+        </section>
+
+        <!-- Courses Grid -->
+        <section class="max-w-7xl mx-auto px-6 pb-20">
+            <ul id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></ul>
+        </section>
+
+        <section class="bg-white py-20 border-t border-gray-100">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <h2 class="text-3xl font-serif font-bold mb-8 italic">Need a custom course?</h2>
+                <p class="text-textMuted text-sm mb-8 max-w-lg mx-auto">I offer personalized training for teams and individuals. Let's discuss your needs.</p>
+                <a href="contact.html" class="inline-flex items-center gap-3 bg-brandRed text-white px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-800 transition-all shadow-lg hover:shadow-red-200">
+                    Get in Touch
+                    <span>→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brandRed text-center py-16 text-white px-4">
+        <h2 class="text-3xl font-serif font-bold mb-3">Ready to start learning?</h2>
+        <p class="text-sm text-gray-200">Book a course or contact me for personalized training.</p>
+    </footer>
+
+    <script src="tokimahery.data.js"></script>
+    <script src="courses.js"></script>
+</body>
+</html>
